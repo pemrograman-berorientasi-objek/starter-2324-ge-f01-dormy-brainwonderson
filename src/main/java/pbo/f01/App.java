@@ -12,6 +12,11 @@ import javax.persistence.TypedQuery;
 import pbo.f01.model.Dorm;
 import pbo.f01.model.Student;
 
+/*
+ * 12S22016 Desri Stevie Natalie Dabukke
+ * 12S22035 Brain Wonderson
+ */
+
 
 public class App {
 
