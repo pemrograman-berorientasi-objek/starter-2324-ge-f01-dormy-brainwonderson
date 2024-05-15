@@ -50,9 +50,9 @@ public class App {
             Dorm dorm = new Dorm(name, capacity, gender);
             dorm.setStudents(new ArrayList<>());
             dorms.add(dorm);
-            System.out.println("Dormitory added successfully.");
+            
         } catch (Exception e) {
-            System.out.println("Error: Invalid dormitory data format. Please try again.");
+            
         }
     }
 
@@ -64,7 +64,7 @@ public class App {
             String gender = parts[4].trim();
             Student student = new Student(id, name, entranceYear, gender);
             students.add(student);
-            System.out.println("Student added successfully.");
+            //System.out.println("Student added successfully.");
         } catch (Exception e) {
             System.out.println("Error: Invalid student data format. Please try again.");
         }
@@ -82,7 +82,7 @@ public class App {
             }
             student.setDorm(dorm);
             dorm.getStudents().add(student);
-            System.out.println("Student assigned to dormitory successfully.");
+           // System.out.println("Student assigned to dormitory successfully.");
         } catch (Exception e) {
             System.out.println("Error: Invalid data format. Please try again.");
         }
