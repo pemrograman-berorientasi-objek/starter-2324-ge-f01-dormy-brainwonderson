@@ -41,7 +41,6 @@ public class App {
         scanner.close();
     }
 
-    // Method to add a new dormitory
     private static void addDorm(String[] parts) {
         try {
             String name = parts[1].trim();
@@ -50,9 +49,8 @@ public class App {
             Dorm dorm = new Dorm(name, capacity, gender);
             dorm.setStudents(new ArrayList<>());
             dorms.add(dorm);
-            
         } catch (Exception e) {
-            
+            System.out.println("Error: Invalid dormitory data format. Please try again.");
         }
     }
 
@@ -64,7 +62,6 @@ public class App {
             String gender = parts[4].trim();
             Student student = new Student(id, name, entranceYear, gender);
             students.add(student);
-            //System.out.println("Student added successfully.");
         } catch (Exception e) {
             System.out.println("Error: Invalid student data format. Please try again.");
         }
@@ -77,12 +74,11 @@ public class App {
             Student student = findStudentById(studentId);
             Dorm dorm = findDormByName(dormName);
             if (student == null || dorm == null || !student.getGender().equals(dorm.getGender()) || dorm.getStudents().size() >= dorm.getCapacity()) {
-                System.out.println("Error: Unable to assign student to dormitory.");
+               // System.out.println("Error: Unable to assign student to dormitory.");
                 return;
             }
             student.setDorm(dorm);
             dorm.getStudents().add(student);
-           // System.out.println("Student assigned to dormitory successfully.");
         } catch (Exception e) {
             System.out.println("Error: Invalid data format. Please try again.");
         }
@@ -106,8 +102,7 @@ public class App {
         }
     }
 
-     // Method to find a student by ID
-     private static Student findStudentById(String id) {
+    private static Student findStudentById(String id) {
         for (Student student : students) {
             if (student.getId().equals(id)) {
                 return student;
@@ -116,8 +111,7 @@ public class App {
         return null;
     }
 
-     // Method to find a dormitory by name
-     private static Dorm findDormByName(String name) {
+    private static Dorm findDormByName(String name) {
         for (Dorm dorm : dorms) {
             if (dorm.getName().equals(name)) {
                 return dorm;
