@@ -1,46 +1,34 @@
 package pbo.f01.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.util.Set;
 
-@Entity	
-@Table(name = "students")
+import javax.persistence.*;
+
+@Entity
 public class Student {
     @Id
-    @Column(name = "id", nullable = false, length = 255)
     private String id;
-
-    @Column(name = "name", nullable = false, length = 255)
     private String name;
-
-    @Column(name = "year", nullable = false, length = 255)
-    private String year; // Changed from entranceYear
-
-    @Column(name = "gender", nullable = false, length = 255)
+    private int entranceYear;
     private String gender;
 
     @ManyToOne
+    @JoinColumn(name = "dorm_id")
     private Dorm dorm;
 
-    public Student() {
-        this.id = "";
-        this.name = "";
-        this.year = "";
-        this.gender = "";
-    }
+    // constructors
+    public Student() {}
 
-    public Student(String id, String name, String year, String gender) {
+    public Student(String id, String name, int entranceYear, String gender) {
         this.id = id;
         this.name = name;
-        this.year = year;
+        this.entranceYear = entranceYear;
         this.gender = gender;
     }
 
+    // getters and setters
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -48,23 +36,23 @@ public class Student {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getYear() {
-        return this.year;
+    public int getEntranceYear() {
+        return entranceYear;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setEntranceYear(int entranceYear) {
+        this.entranceYear = entranceYear;
     }
 
     public String getGender() {
-        return this.gender;
+        return gender;
     }
 
     public void setGender(String gender) {
@@ -79,8 +67,8 @@ public class Student {
         this.dorm = dorm;
     }
 
-    @Override
-    public String toString() {
-        return id + "|" + name + "|" + year; // Adjusted to use year instead of entranceYear
-    }    
+    public Set<Student> getStudents() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStudents'");
+    }
 }
